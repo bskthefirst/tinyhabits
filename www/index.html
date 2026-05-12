@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#F8F6F3">
+<title>Tiny Habits</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>Tiny Habits</h1>
+    <p class="date" id="date"></p>
+  </header>
+
+  <div class="progress-ring" id="progressRing">
+    <svg viewBox="0 0 100 100">
+      <circle class="track" cx="50" cy="50" r="42"></circle>
+      <circle class="fill" id="progressCircle" cx="50" cy="50" r="42"></circle>
+    </svg>
+    <div class="progress-text">
+      <span id="progressPercent">0%</span>
+      <small>Today</small>
+    </div>
+  </div>
+
+  <div class="habits-list" id="habitsList"></div>
+
+  <div class="empty-state" id="emptyState">
+    <div class="empty-icon">🌱</div>
+    <p>No habits yet</p>
+    <small>Add your first tiny habit below</small>
+  </div>
+
+  <button class="fab" id="addBtn" aria-label="Add habit">+</button>
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal-backdrop"></div>
+  <div class="modal-content">
+    <h2>New Habit</h2>
+    <input type="text" id="habitName" placeholder="e.g. Drink water" maxlength="30">
+    <div class="color-picker">
+      <label>Color</label>
+      <div class="colors">
+        <button class="color" data-color="#E8A87C" style="background:#E8A87C"></button>
+        <button class="color" data-color="#85CDCA" style="background:#85CDCA"></button>
+        <button class="color" data-color="#C38D9E" style="background:#C38D9E"></button>
+        <button class="color active" data-color="#41B3A3" style="background:#41B3A3"></button>
+        <button class="color" data-color="#E27D60" style="background:#E27D60"></button>
+        <button class="color" data-color="#659DBD" style="background:#659DBD"></button>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-secondary" id="cancelBtn">Cancel</button>
+      <button class="btn-primary" id="saveBtn">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="statsModal">
+  <div class="modal-backdrop"></div>
+  <div class="modal-content stats-modal">
+    <button class="close-btn" id="closeStats">&times;</button>
+    <h2 id="statsTitle">Habit</h2>
+    <div class="streak-badge">
+      <span class="fire">🔥</span>
+      <span id="streakCount">0</span>
+      <small>day streak</small>
+    </div>
+    <div class="week-grid" id="weekGrid"></div>
+    <p class="stats-tip" id="statsTip">Keep it up!</p>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

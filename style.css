@@ -1,0 +1,476 @@
+:root {
+  --bg: #F8F6F3;
+  --card: #FFFFFF;
+  --text: #2C2C2C;
+  --text-light: #8A8A8A;
+  --accent: #41B3A3;
+  --shadow: 0 2px 16px rgba(0,0,0,0.06);
+  --radius: 20px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+
+html, body {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 24px 20px 100px;
+  position: relative;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+header .date {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.progress-ring {
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 32px;
+  position: relative;
+}
+
+.progress-ring svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.progress-ring circle {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+}
+
+.progress-ring .track {
+  stroke: rgba(0,0,0,0.06);
+}
+
+.progress-ring .fill {
+  stroke: var(--accent);
+  stroke-dasharray: 264;
+  stroke-dashoffset: 264;
+  transition: stroke-dashoffset 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+
+.progress-text span {
+  display: block;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.progress-text small {
+  font-size: 12px;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.habits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.habit-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s, box-shadow 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+
+.habit-card:active {
+  transform: scale(0.98);
+}
+
+.habit-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--habit-color, var(--accent));
+  border-radius: var(--radius) 0 0 var(--radius);
+}
+
+.habit-card.done {
+  opacity: 0.65;
+}
+
+.habit-card.done .habit-name {
+  text-decoration: line-through;
+  color: var(--text-light);
+}
+
+.checkbox {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2.5px solid var(--habit-color, var(--accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: transparent;
+}
+
+.checkbox svg {
+  width: 14px;
+  height: 14px;
+  stroke: #fff;
+  stroke-width: 3;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.2s;
+}
+
+.habit-card.done .checkbox {
+  background: var(--habit-color, var(--accent));
+  border-color: var(--habit-color, var(--accent));
+}
+
+.habit-card.done .checkbox svg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.habit-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.habit-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.habit-streak {
+  font-size: 12px;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+.habit-streak.hot {
+  color: #E27D60;
+  font-weight: 600;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.habit-card:hover .delete-btn,
+.habit-card:active .delete-btn {
+  opacity: 1;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-light);
+}
+
+.empty-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.empty-state p {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.empty-state small {
+  font-size: 14px;
+}
+
+.fab {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--text);
+  color: #fff;
+  border: none;
+  font-size: 28px;
+  font-weight: 300;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+  z-index: 10;
+}
+
+.fab:active {
+  transform: translateX(-50%) scale(0.92);
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal.open {
+  display: flex;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.modal.open .modal-backdrop {
+  opacity: 1;
+}
+
+.modal-content {
+  background: var(--card);
+  border-radius: var(--radius) var(--radius) 0 0;
+  padding: 24px;
+  width: 100%;
+  max-width: 430px;
+  position: relative;
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+.modal.open .modal-content {
+  transform: translateY(0);
+}
+
+.modal-content h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid rgba(0,0,0,0.1);
+  border-radius: 14px;
+  font-size: 16px;
+  background: var(--bg);
+  margin-bottom: 20px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.modal-content input:focus {
+  border-color: var(--accent);
+}
+
+.color-picker label {
+  display: block;
+  font-size: 13px;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.colors {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.color {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.color.active {
+  border-color: var(--text);
+  transform: scale(1.1);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.modal-actions button {
+  flex: 1;
+  padding: 14px;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.modal-actions button:active {
+  opacity: 0.7;
+}
+
+.btn-secondary {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.btn-primary {
+  background: var(--text);
+  color: #fff;
+}
+
+/* Stats modal */
+.stats-modal {
+  text-align: center;
+  padding-top: 40px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: var(--text-light);
+  cursor: pointer;
+}
+
+.streak-badge {
+  margin: 20px 0;
+}
+
+.streak-badge .fire {
+  font-size: 40px;
+  display: block;
+}
+
+.streak-badge span:nth-child(2) {
+  font-size: 48px;
+  font-weight: 700;
+  display: block;
+  line-height: 1;
+}
+
+.streak-badge small {
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+.week-grid {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 24px 0;
+}
+
+.day-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--bg);
+  color: var(--text-light);
+}
+
+.day-dot.done {
+  background: var(--accent);
+  color: #fff;
+}
+
+.stats-tip {
+  font-size: 15px;
+  color: var(--text-light);
+  margin-top: 8px;
+}
+
+/* Animations */
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.habit-card.just-did {
+  animation: pop 0.3s ease;
+}
+
+/* Safe area for notched devices */
+@supports (padding-top: env(safe-area-inset-top)) {
+  .app {
+    padding-top: calc(24px + env(safe-area-inset-top));
+  }
+  .fab {
+    bottom: calc(28px + env(safe-area-inset-bottom));
+  }
+}
