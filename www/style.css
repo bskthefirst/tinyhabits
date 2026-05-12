@@ -318,9 +318,15 @@ header .date {
   color: var(--text-light);
 }
 
-.empty-icon {
-  font-size: 48px;
-  margin-bottom: 12px;
+.empty-icon-img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 16px;
+  border-radius: 50%;
+  background: var(--card);
+  padding: 16px;
+  box-shadow: var(--shadow);
 }
 
 .empty-state p {
@@ -601,8 +607,11 @@ header .date {
   margin: 16px 0;
 }
 
-.streak-badge .fire {
-  font-size: 40px;
+.streak-img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  margin: 0 auto 8px;
   display: block;
 }
 
@@ -742,9 +751,14 @@ header .date {
   padding: 40px 28px;
 }
 
-.onboarding-emoji {
-  font-size: 64px;
-  margin-bottom: 16px;
+.onboarding-img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  background: var(--bg);
+  padding: 20px;
 }
 
 .onboarding-content h2 {

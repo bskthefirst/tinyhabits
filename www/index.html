@@ -40,7 +40,7 @@
   <div class="habits-list" id="habitsList"></div>
 
   <div class="empty-state" id="emptyState">
-    <div class="empty-icon">🌱</div>
+    <img src="img/empty_seedling.png" class="empty-icon-img" alt="">
     <p>No habits yet</p>
     <small>Add your first tiny habit below</small>
   </div>
@@ -118,7 +118,7 @@
     <button class="close-btn" id="closeStats">&times;</button>
     <h2 id="statsTitle">Habit</h2>
     <div class="streak-badge">
-      <span class="fire">🔥</span>
+      <img src="img/streak_flame.png" class="streak-img" alt="">
       <span id="streakCount">0</span>
       <small>day streak</small>
     </div>
@@ -186,13 +186,13 @@
   <div class="modal-backdrop" style="background:rgba(0,0,0,0.4)"></div>
   <div class="modal-content onboarding-content">
     <div class="onboarding-step" id="step1">
-      <div class="onboarding-emoji">🌱</div>
+      <img src="img/empty_seedling.png" class="onboarding-img" alt="">
       <h2>Welcome to Tiny Habits</h2>
       <p>Small steps, every day. Build habits that stick with gentle tracking and beautiful streaks.</p>
       <button class="btn-primary" onclick="nextOnboarding()">Get Started</button>
     </div>
     <div class="onboarding-step hidden" id="step2">
-      <div class="onboarding-emoji">✅</div>
+      <img src="img/streak_flame.png" class="onboarding-img" alt="">
       <h2>Tap to Check In</h2>
       <p>One tap marks a habit complete. Watch your streak grow and your progress ring fill up.</p>
       <button class="btn-primary" onclick="finishOnboarding()">Start Tracking</button>
