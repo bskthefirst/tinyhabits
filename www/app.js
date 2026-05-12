@@ -588,6 +588,7 @@ function finishOnboarding() {
 // ===== Events =====
 $('addBtn').onclick = openAdd;
 $('cancelBtn').onclick = () => $('modal').classList.remove('open');
+$('cancelBtn2').onclick = () => $('modal').classList.remove('open');
 $('closeStats').onclick = () => $('statsModal').classList.remove('open');
 $('closeSettings').onclick = () => $('settingsModal').classList.remove('open');
 $('settingsBtn').onclick = openSettings;

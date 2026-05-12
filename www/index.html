@@ -7,6 +7,10 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#F8F6F3" id="themeMeta">
 <title>Tiny Habits</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=settings,close,add,drag_indicator,check,arrow_back,delete,restore_from_trash,expand_more,calendar_today,streak,archive,trending_up,check_circle" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,7 +23,7 @@
         <p class="date" id="date"></p>
       </div>
       <button class="icon-btn" id="settingsBtn" aria-label="Settings">
-        <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2" fill="none"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09A1.65 1.65 0 0 0 9 4.6V4a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span class="material-symbols-outlined">settings</span>
       </button>
     </div>
   </header>
@@ -44,25 +48,26 @@
 
   <div class="empty-state" id="emptyState">
     <div class="empty-icon-wrap">
-      <svg viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="currentColor" stroke-width="2"><path d="M32 56c0-16 8-24 8-24s-4-8-8-8-8 8-8 8 8 8 8 24z"/><circle cx="32" cy="20" r="6"/></svg>
+      <svg viewBox="0 0 64 64" width="48" height="48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M32 52c0-14 6-20 6-20s-3-6-6-6-6 6-6 6 6 6 6 20z"/><circle cx="32" cy="18" r="5"/></svg>
     </div>
     <p>No habits yet</p>
     <small>Add your first tiny habit below</small>
   </div>
 
   <button class="fab" id="addBtn" aria-label="Add habit">
-    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    <span class="material-symbols-outlined">add</span>
   </button>
 </div>
 
-<!-- Confetti canvas -->
 <canvas id="confetti" class="confetti-canvas"></canvas>
 
-<!-- Add/Edit Modal -->
 <div class="modal" id="modal">
   <div class="modal-backdrop"></div>
   <div class="modal-content">
-    <h2 id="modalTitle">New Habit</h2>
+    <div class="modal-header-row">
+      <h2 id="modalTitle">New Habit</h2>
+      <button class="close-btn" id="cancelBtn"><span class="material-symbols-outlined">close</span></button>
+    </div>
     <input type="text" id="habitName" placeholder="e.g. Drink water" maxlength="40" enterkeyhint="done">
 
     <div class="form-row">
@@ -112,20 +117,19 @@
       </div>
     </div>
     <div class="modal-actions">
-      <button class="btn-secondary" id="cancelBtn">Cancel</button>
+      <button class="btn-secondary" id="cancelBtn2">Cancel</button>
       <button class="btn-primary" id="saveBtn">Save</button>
     </div>
   </div>
 </div>
 
-<!-- Stats Modal -->
 <div class="modal" id="statsModal">
   <div class="modal-backdrop"></div>
   <div class="modal-content stats-modal">
-    <button class="close-btn" id="closeStats">&times;</button>
+    <button class="close-btn" id="closeStats"><span class="material-symbols-outlined">close</span></button>
     <h2 id="statsTitle">Habit</h2>
     <div class="streak-badge">
-      <svg viewBox="0 0 48 48" width="48" height="48" class="streak-svg"><defs><linearGradient id="flameGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffce3a"/><stop offset="100%" stop-color="#E27D60"/></linearGradient></defs><path d="M24 44c-8 0-14-6-14-14 0-6 4-10 6-16 2 4 4 6 6 8 2-6 6-10 8-14 2 6 8 12 8 18 0 8-6 18-14 18z" fill="url(#flameGrad)"/></svg>
+      <svg viewBox="0 0 48 48" width="56" height="56" class="streak-svg"><defs><linearGradient id="flameGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffce3a"/><stop offset="100%" stop-color="#E27D60"/></linearGradient></defs><path d="M24 44c-8 0-14-6-14-14 0-6 4-10 6-16 2 4 4 6 6 8 2-6 6-10 8-14 2 6 8 12 8 18 0 8-6 18-14 18z" fill="url(#flameGrad)"/></svg>
       <span id="streakCount">0</span>
       <small>day streak</small>
     </div>
@@ -153,12 +157,13 @@
   </div>
 </div>
 
-<!-- Settings Modal -->
 <div class="modal" id="settingsModal">
   <div class="modal-backdrop"></div>
   <div class="modal-content">
-    <button class="close-btn" id="closeSettings">&times;</button>
-    <h2>Settings</h2>
+    <div class="modal-header-row">
+      <h2>Settings</h2>
+      <button class="close-btn" id="closeSettings"><span class="material-symbols-outlined">close</span></button>
+    </div>
     <div class="setting-row">
       <span>Dark mode</span>
       <label class="toggle">
@@ -189,13 +194,12 @@
   </div>
 </div>
 
-<!-- Onboarding -->
 <div class="modal" id="onboardingModal">
   <div class="modal-backdrop" style="background:rgba(0,0,0,0.4)"></div>
   <div class="modal-content onboarding-content">
     <div class="onboarding-step" id="step1">
       <div class="onboarding-icon">
-        <svg viewBox="0 0 64 64" width="80" height="80" fill="none" stroke="currentColor" stroke-width="2"><path d="M32 56c0-16 8-24 8-24s-4-8-8-8-8 8-8 8 8 8 8 24z"/><circle cx="32" cy="20" r="6"/></svg>
+        <svg viewBox="0 0 64 64" width="72" height="72" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M32 52c0-14 6-20 6-20s-3-6-6-6-6 6-6 6 6 6 6 20z"/><circle cx="32" cy="18" r="5"/></svg>
       </div>
       <h2>Welcome to Tiny Habits</h2>
       <p>Small steps, every day. Build habits that stick with gentle tracking and beautiful streaks.</p>
@@ -203,7 +207,7 @@
     </div>
     <div class="onboarding-step hidden" id="step2">
       <div class="onboarding-icon">
-        <svg viewBox="0 0 48 48" width="64" height="64"><defs><linearGradient id="flameGrad2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffce3a"/><stop offset="100%" stop-color="#E27D60"/></linearGradient></defs><path d="M24 44c-8 0-14-6-14-14 0-6 4-10 6-16 2 4 4 6 6 8 2-6 6-10 8-14 2 6 8 12 8 18 0 8-6 18-14 18z" fill="url(#flameGrad2)"/></svg>
+        <svg viewBox="0 0 48 48" width="56" height="56"><defs><linearGradient id="flameGrad2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ffce3a"/><stop offset="100%" stop-color="#E27D60"/></linearGradient></defs><path d="M24 44c-8 0-14-6-14-14 0-6 4-10 6-16 2 4 4 6 6 8 2-6 6-10 8-14 2 6 8 12 8 18 0 8-6 18-14 18z" fill="url(#flameGrad2)"/></svg>
       </div>
       <h2>Tap to Check In</h2>
       <p>One tap marks a habit complete. Watch your streak grow and your progress ring fill up.</p>
